@@ -137,3 +137,24 @@ document.getElementById(`loadDataFetch`).addEventListener(`click`, getApi);
 //addEventListener when clicked//
 document.getElementById(`loadDataXHR`).addEventListener(`click`, getData);
 
+//Task 5: COMPARING FETCH API AND XMLHTTPREQUEST//
+/*
+Fetch API
+- A modern, simpler API for making HTTP requests.
+- Uses Promises for cleaner asynchronous handling with .then() or async/await.
+- Easier to use and maintain in modern applications.
+
+XMLHTTPREQUEST
+- An older API, still used for HTTP requests.
+- Requires more verbose code.
+- Offers detailed control over the request lifecycle, like tracking progress.
+
+Fetch API is more powerful and easier to understand as compared to XMLHttpRequest. 
+It is also supported by all modern browsers but XMLHttpRequest is only supported by old browsers.
+
+Example scenario 
+Fetch API: Display real-time weather data on a website by using data from public API.
+
+XMLHttpRequest: The user submits a comment, an XMLHttpRequest is made to submit the form data to the server, 
+and the page is updated with the new comment without requiring a full page reload.
+*/
