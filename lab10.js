@@ -41,14 +41,21 @@ which processes the request and deletes the user's account.*/
 //Use the Fetch API to make a GET request to a public API endpoint
 function getApi() {
     fetch(`https://api.coinbase.com/v2/currencies`)
-    .then(response => response.json())
-    .then (data => {
-        //check data from the api//
-        console.log(data); 
-        
-    })
-    .catch(error => console.error(`Error fretching data: `, error));
+        .then(response => response.json())
+        .then(data => {
+            //check data from the api//
+            console.log(data);
+
+            //get the id from the API//
+            let id = data.data[0].id;
+            document.getElementById('ID').textContent = id;
+    
+        })
+        .catch(error => console.error(`Error fretching data: `, error));
 }
 
 getApi();
+
+//add eventlistener to click button --> get random cat image when click
+document.getElementById(`loadData`).addEventListener(`click`, getApi);
 
