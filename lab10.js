@@ -61,14 +61,27 @@ function createTable(currencies) {
     const tableBody = document.getElementById('outputTable');
     //Loop in array//
     currencies.forEach(currency => {
+
         //create row//
         let row = document.createElement(`tr`);
+
         //creaye column for id//
         let idColumn = document.createElement(`td`);
         //set text//
         idColumn.textContent = currency.id;
         //add ID into row//
         row.appendChild(idColumn);
+
+        //get name from the api and add to the row//
+        let nameColumn = document.createElement(`td`);
+        nameColumn.textContent = currency.name;
+        row.appendChild(nameColumn);
+
+        //get min size from the api and add to the row//
+        let minSizeColumn = document.createElement(`td`);
+        minSizeColumn.textContent = currency.min_size;
+        row.appendChild(minSizeColumn);
+
         //add column into body//
         tableBody.appendChild(row);
     })
