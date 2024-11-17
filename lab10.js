@@ -40,7 +40,7 @@ which processes the request and deletes the user's account.*/
 //Task 3
 //Use the Fetch API to make a GET request to a public API endpoint
 function getApi() {
-    fetch(`https://api.coinbase.com/v2/currencies`)
+    fetch('https://api.coinbase.com/v2/currencies')
         .then(response => response.json())
         .then(data => {
             //check data from the api//
@@ -55,12 +55,30 @@ function getApi() {
         .catch(error => console.error(`Error fretching data: `, error));
 }
 
+//using fetch with async and await//
+/*async function getApi() {
+    try {
+        let response = await fetch('https://api.coinbase.com/v2/currencies');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        let data = await response.json();
+        console.log(data);
+
+        let currencies = data.data;
+        createTable(currencies);
+
+    } catch (error) {
+        console.error(`Error:`, error);
+    }
+}*/
+
 //Task 4 make a GET request using XMLHttpRequest
 function getData() {
     //Create a new XMLHttpRequest object//
     let xhr = new XMLHttpRequest();
     //Use GET method to get data//
-    xhr.open(`GET`, `https://api.coinbase.com/v2/currencies`, true);
+    xhr.open(`GET`, 'https://api.coinbase.com/v2/currencies', true);
 
     xhr.onload = function () {
         //Check if the request was successful//
@@ -118,3 +136,4 @@ function createTable(currencies) {
 document.getElementById(`loadDataFetch`).addEventListener(`click`, getApi);
 //addEventListener when clicked//
 document.getElementById(`loadDataXHR`).addEventListener(`click`, getData);
+
