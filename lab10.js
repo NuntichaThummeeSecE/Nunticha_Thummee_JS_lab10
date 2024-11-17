@@ -38,3 +38,16 @@ Example: A user wants to delete their account. The browser sends a DELETE reques
 which processes the request and deletes the user's account.*/
 
 //Task 3
+//Use the Fetch API to make a GET request to a public API endpoint
+function getApi() {
+    fetch(`https://api.coinbase.com/v2/currencies`)
+    .then(response => response.json())
+    .then (data => {
+        console.log(data);
+        
+    })
+    .catch(error => console.error(`Error fretching data: `, error));
+}
+
+getApi();
+
