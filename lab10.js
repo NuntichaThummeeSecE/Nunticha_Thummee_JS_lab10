@@ -55,6 +55,34 @@ function getApi() {
         .catch(error => console.error(`Error fretching data: `, error));
 }
 
+//Task 4 make a GET request using XMLHttpRequest
+function getData() {
+    //Create a new XMLHttpRequest object//
+    let xhr = new XMLHttpRequest();
+    //Use GET method to get data//
+    xhr.open(`GET`, `https://api.coinbase.com/v2/currencies`, true);
+
+    xhr.onload = function () {
+        //Check if the request was successful//
+        if (xhr.status === 200) {
+            //Parse the response text to JSON//
+            const data = JSON.parse(xhr.responseText);
+            //check data//
+            console.log(data);
+            //assigns the variable currencies with the data from the API//
+            let currencies = data.data;
+            //call createTable function and pass data into parameter//
+            createTable(currencies);
+        } else {
+            //Log an error if the request was error//
+            console.log(`Error:`, xhr.status);
+        }
+    };
+
+    //Send the request to the API
+    xhr.send();
+}
+
 //create table//
 function createTable(currencies) {
     //getElementById from html -- where to display the data//
@@ -87,5 +115,6 @@ function createTable(currencies) {
     })
 }
 //addEventListener when clicked//
-document.getElementById(`loadData`).addEventListener(`click`, getApi);
-
+document.getElementById(`loadDataFetch`).addEventListener(`click`, getApi);
+//addEventListener when clicked//
+document.getElementById(`loadDataXHR`).addEventListener(`click`, getData);
