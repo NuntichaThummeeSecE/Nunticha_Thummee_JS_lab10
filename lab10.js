@@ -43,7 +43,8 @@ function getApi() {
     fetch(`https://api.coinbase.com/v2/currencies`)
     .then(response => response.json())
     .then (data => {
-        console.log(data);
+        //check data from the api//
+        console.log(data); 
         
     })
     .catch(error => console.error(`Error fretching data: `, error));
