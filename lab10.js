@@ -45,17 +45,34 @@ function getApi() {
         .then(data => {
             //check data from the api//
             console.log(data);
+            //assigns the variable currencies with the data from the API//
+            let currencies = data.data;
+            //call createTable function and pass data into parameter//
+            createTable(currencies);
 
-            //get the id from the API//
-            let id = data.data[0].id;
-            document.getElementById('ID').textContent = id;
-    
         })
+        //Implement error handling for the API call//
         .catch(error => console.error(`Error fretching data: `, error));
 }
 
-getApi();
-
-//add eventlistener to click button --> get random cat image when click
+//create table//
+function createTable(currencies) {
+    //getElementById from html -- where to display the data//
+    const tableBody = document.getElementById('outputTable');
+    //Loop in array//
+    currencies.forEach(currency => {
+        //create row//
+        let row = document.createElement(`tr`);
+        //creaye column for id//
+        let idColumn = document.createElement(`td`);
+        //set text//
+        idColumn.textContent = currency.id;
+        //add ID into row//
+        row.appendChild(idColumn);
+        //add column into body//
+        tableBody.appendChild(row);
+    })
+}
+//addEventListener when clicked//
 document.getElementById(`loadData`).addEventListener(`click`, getApi);
 
